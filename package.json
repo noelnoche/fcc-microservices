@@ -1,0 +1,48 @@
+{
+  "name": "five-microservices",
+  "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noelnoche/fcc-microservices"
+  },
+  "description": "Five small web applications - timestamp, request header parser, file size analyzer, url shortener and image abstraction layer",
+  "author": "Noel Noche <contact@hellonoel.com>",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": "^14.3.0",
+    "npm": "^6.14.5"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=development node src/server.js",
+    "start:production": "NODE_ENV=production node dist/server.js",
+    "test": "NODE_ENV=test mocha --ui bdd --exit || true",
+    "babel": "babel src -d dist --source-maps inline --copy-files --ignore src/views/static_files/js/dev_uploader-client.js",
+    "eslint": "npx eslint src/**/*.js",
+    "jsdoc": "jsdoc ./node_modules/.bin/jsdoc src -r -d docs"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "multer": "^1.4.2",
+    "pug": "^3.0.0",
+    "shortid": "^2.2.16",
+    "url": "^0.11.0",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-classes": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.12.0",
+    "jsdoc": "^3.6.6",
+    "mocha": "^8.2.0"
+  }
+}

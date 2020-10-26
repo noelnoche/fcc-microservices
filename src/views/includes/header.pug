@@ -1,0 +1,35 @@
+.header__page-graphic.mx-auto.mb-5
+  if appEnv === 'production'
+    a(href='https://ncode.herokuapp.com')
+      img.img-fluid(src='https://ncode.herokuapp.com/static/assets/graphic/page-graphic.png' alt='microservice logo')
+  else
+    a(href='http://localhost:3000')
+      img.img-fluid(src='http://localhost:3000/static/assets/graphic/page-graphic.png' alt='microservice logo')
+
+case content
+  when 'landing'
+    h1 Five Microservices
+    p.lead
+      | This is a collection of web applications structured
+      | under a microservice style architecture. Each service
+      | is accessed through an API endpoint that returns results in JSON format with the exception of File
+      | Metadata Reader.
+  when 'timestamp'
+    h1 Timestamp Converter
+    p.lead This service takes a date and returns timestamps in both human-readable and UNIX based format.
+  when 'header-parser'
+    h1 Request Header Parser
+    p.lead This service reads and returns information from the client's browser request header.
+  when 'file-analyzer'
+    h1 File Metadata Reader
+    p.lead This service parses an uploaded file and returns its size.
+  when 'url-shortener'
+    h1 URL Shortener
+    p.lead This service converts a long web address into just a few random letters (excluding the base URL).
+  when 'image-abstract'
+    h1 Image Search Abstraction Layer
+    p.lead This service utilizes a general search API and returns image results.
+  default
+    - break
+
+

@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+}
+
+
+.cover-container {
+  max-width: 48em;
+}
+
+.btn-info {
+  margin: 0.25rem;
+}
+
+.header__page-graphic {
+  height: 10rem;
+  width: 10rem;
+}
+
+.vert-pipe {
+  font-weight: 100;
+}

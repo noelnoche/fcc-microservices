@@ -1,0 +1,14 @@
+div(role='main')
+  nav.nav
+    if appEnv === 'production'
+      a.btn.btn-lg.btn-info.flex-fill(href='https://ncom.herokuapp.com/timestamp/api/v1') Timestamp Converter
+      a.btn.btn-lg.btn-info.flex-fill(href='https://ncom.herokuapp.com/header-parser/api/v1') Request Header Parser
+      a.btn.btn-lg.btn-info.flex-fill(href='https://ncom.herokuapp.com/url-shortener/api/v1') URL Shortener
+      a.btn.btn-lg.btn-info.flex-fill(href='https://ncom.herokuapp.com/image-abstract/api/v1') Image Search Abstraction Layer
+      a.btn.btn-lg.btn-info.flex-fill(href='https://ncom.herokuapp.com/file-analyzer') File Metadata Reader
+    else
+      a.btn.btn-lg.btn-info.flex-fill(href='http://localhost:3000/timestamp/api/v1') Timestamp Converter
+      a.btn.btn-lg.btn-info.flex-fill(href='http://localhost:3000/header-parser/api/v1') Request Header Parser
+      a.btn.btn-lg.btn-info.flex-fill(href='http://localhost:3000/url-shortener/api/v1') URL Shortener
+      a.btn.btn-lg.btn-info.flex-fill(href='http://localhost:3000/image-abstract/api/v1') Image Search Abstraction Layer
+      a.btn.btn-lg.btn-info.flex-fill(href='http://localhost:3000/file-analyzer') File Metadata Reader

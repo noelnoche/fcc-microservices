@@ -1,0 +1,18 @@
+div(role='main')
+  .main__inner.d-table.m-auto
+    section
+      .section.mb-5
+        h3.text-center Usage
+        ol
+          li Click the browse button and select a file (100 KB size limit; .txt, .md only).
+          li Click the submit button.
+          li A window will pop up indicating the size of the file.
+    section
+      .section
+        h3.text-center File Uploader
+        form#form.d-flex.flex-row.justify-content-between.align-items-center(enctype='multipart/form-data')
+          .form-group
+            label.form-check-label(for='selector')
+            input#selector.form-control-file(type='file' name='upfile' accept='.txt, .md')
+          input#uploader.btn.btn-primary(type='submit' value='Submit')
+            

@@ -1,0 +1,40 @@
+meta(charset='utf-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+meta(name='author', content='Noel Noche')
+
+case content
+  when 'landing'
+    meta(name='description', content='Five Microservices is suite of five mini applications: timestamp, request header parser, file size analyzer, URL shortener and image abstraction layer.')
+  when 'timestamp'
+    meta(name='description', content='Timestamp Converter is a service that takes a date and returns timestamps in both human-readable and UNIX based format.')
+  when 'header-parser'
+    meta(name='description', content='Request Header Parser is a service that reads and returns information from the request header of the client browser.')
+  when 'file-analyzer'
+    meta(name='description', content='File Metadata Reader is a service that parses an uploaded file and returns its size.')
+  when 'url-shortener'
+    meta(name='description', content='URL Shortener is a service that converts a long web address into just a few random letters (excluding the base URL).')
+  when 'image-abstract'
+    meta(name='description', content='Image Search Abstraction Layer is a service that utilizes a general search API and returns image results.')
+
+link(rel='shortcut icon', href='https://lh3.googleusercontent.com/pw/ACtC-3fyflwYxLyi9zuWc6zUPPXJaHttRp9bOzLd9MNzUx6YuM2y8BJtMkS6JWtWJYUD35s23t_6YFVHwEbMmh4amhjGozWaJZQR5KUvJzmpKmoBDcFWK7iCdNeBraMXZRy-g_w5ig3DlzRrbJ5nK6dtZyNM=s500-no?authuser=0')
+link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css')
+
+if appEnv === 'production'
+    link(rel='stylesheet', href='https://ncode.herokuapp.com/static/css/main.css')
+else
+    link(rel='stylesheet', href='http://localhost:3000/static/css/main.css')
+
+case content
+  when 'landing'
+    title Five Microservices
+  when 'timestamp'
+    title Five Microservices - Timestamp Coverter
+  when 'header-parser'
+    title Five Microservices - Request Header Parser
+  when 'file-analyzer'
+    title Five Microservices - File Metadata Reader
+  when 'url-shortener'
+    title Five Microservices - URL Shortener
+  when 'image-abstract'
+    title Five Microservices - Image Search Abstraction Layer

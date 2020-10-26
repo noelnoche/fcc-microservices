@@ -1,0 +1,28 @@
+div(role='main')
+  .main__inner.d-table.m-auto
+    section
+      .section.mb-5
+        h3.text-center Example GET Requests
+        h5 Valid
+        ul
+          li
+            code https://ncom.herokuapp.com/timestamp/api/v1/January 1, 2015
+          li
+            code https://ncom.herokuapp.com/timestamp/api/v1/Jan 1, 2015
+          li
+            code https://ncom.herokuapp.com/timestamp/api/v1/1420070400000
+        h5 Invalid
+        ul
+          li
+            code https://ncom.herokuapp.com/timestamp/api/v1/Jan 1 2015
+          li
+            code https://ncom.herokuapp.com/timestamp/api/v1/01-01-2015
+    section
+      .section
+        h3.text-center Expected Output
+        h5 Valid
+        code
+          | {&quot;unix&quot;: 1420070400000, &quot;natural&quot;: &quot;January 1, 2015&quot;}
+        h5.mt-3 Invalid
+        code
+          | {&quot;unix&quot;: null, &quot;natural&quot;: null}

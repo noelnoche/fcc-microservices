@@ -1,0 +1,134 @@
+html {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  padding-bottom: 3rem;
+  font-family: "Helvetica Neue", "Arial";
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #69c;
+}
+
+.a--white {
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #69c;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-position: inside;
+}
+
+span {
+  color: #900;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.header {
+  padding-top: 2rem;
+  text-align: center;
+  color: #fff;
+  background-color: #09640a;
+}
+
+.logo {
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+.main {
+  max-width: 45rem;
+  margin: auto;
+  padding-top: 3rem;
+}
+
+.main__app-list {
+  max-width: 20rem;
+  margin: auto;
+  font-size: 1.2rem;
+}
+
+.main__num-list--li {
+  list-style-type: decimal;
+}
+
+.main__section {
+  margin-top: 45px;
+  margin-top: 2.5rem;
+}
+
+/*
+ * Fixes inconsistent form input styles due to Normalize
+ */
+input {
+  font-size: 16.2px;
+  font-size: 0.9rem;
+}
+
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+  background-color: #09640a;
+}
+
+.footer__footer-items {
+  display: table;
+  height: inherit;
+  max-width: 12rem;
+  margin: auto;
+}
+
+.footer-items__item {
+  display: table-cell;
+  width: 8rem;
+  vertical-align: middle;
+}
