@@ -9,7 +9,7 @@ if (appEnv === 'production') {
   server.port = process.env.PORT;
   server.ip = process.env.IP;
   endpoints.MONGO_URI = process.env.MONGO_URI;
-  endpoints.SHORT_URI = 'https://ncode.herokuapp.com/url-shortener/';
+  endpoints.SHORT_URI = 'https://ncom.herokuapp.com/url-shortener/';
 } else {
   require('dotenv').config();
 
