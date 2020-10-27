@@ -2,7 +2,8 @@ const appEnv = process.env.NODE_ENV;
 const creds = {};
 const server = {};
 const endpoints = {};
-
+creds.CX_ID = process.env.CX_ID;
+creds.CSE_KEY = process.env.CSE_KEY;
 
 if (appEnv === 'production') {
   server.port = process.env.PORT;
@@ -12,8 +13,6 @@ if (appEnv === 'production') {
 }
 else {
   require('dotenv').config();
-  creds.CX_ID = process.env.CX_ID;
-  creds.CSE_KEY = process.env.CSE_KEY;
   server.port = 3000;
   server.ip = '0.0.0.0';
   endpoints.MONGO_URI = 'mongodb://localhost:27017';
