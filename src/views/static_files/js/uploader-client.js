@@ -9,7 +9,7 @@ const uploaderClient = () => {
   let apiUrl = window.location.href + '/api/v1/findsize';
 
   // Manual AJAX request with form data
-  ajaxRequest = (method, url, callback) => {
+  const ajaxRequest = (method, url, callback) => {
     const xmlhttp = new XMLHttpRequest();
 
     // Need to override the form submit
@@ -25,7 +25,7 @@ const uploaderClient = () => {
     xmlhttp.send(FD);
   }
 
-  makeRequest = () => {
+  const makeRequest = () => {
     if (fileObj.value) {
       ajaxRequest('POST', apiUrl, (data) => {
         // alert('File Size -- ' + data);
