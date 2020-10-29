@@ -1,11 +1,13 @@
-const config = require('./app.config');
-
 /**
  * The entrypoint of the application, this file holds operations that set up
  * the server and MongoDB database
  * @module server
+ * @version 2.0.0
  * @see module:app-routes
  */
+
+
+const config = require('./app.config');
 
 // Required NodeJS and Express modules
 const http = require('http');
@@ -20,7 +22,7 @@ const appRoutes = require('./app-routes');
 
 const main = (database) => {
   appRoutes.setup(app, express, database);
-  
+
   // Create and run the server after everything is set up
   const server = http.createServer(app);
   const portIp = config.server.port || config.server.ip;
@@ -39,7 +41,7 @@ const MongoServerClient = require('mongodb').MongoClient;
 let database = null;
 const mongoURI = config.endpoints.MONGO_URI;
 
-MongoServerClient.connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+MongoServerClient.connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser: true }, function (err, client) {
   if (err) {
     throw new Error(err)
   }
@@ -50,5 +52,5 @@ MongoServerClient.connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser:
 });
 
 if (process.env.NODE_ENV === 'test') {
-  module.exports = app; 
+  module.exports = app;
 }
