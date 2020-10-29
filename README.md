@@ -7,8 +7,9 @@ URL Shortener, Image Search Abstract Layer and File Metadata Reader. Each servic
 and returns results in JSON format with the exception of File Metadata Reader.
 
 
-## Demo
-<https://youtu.be/g7ipSi-iz-A>
+## Demo + Link
+<https://youtu.be/g7ipSi-iz-A>  
+<https://ncom.herokuapp.com/>
 
 
 ## Documentation
