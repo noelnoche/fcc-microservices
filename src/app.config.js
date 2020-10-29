@@ -1,3 +1,11 @@
+/**
+ * Application configuration file
+ * @module app.config
+ * @version 2.0.0
+ * @see module:app-routes
+ */
+
+
 const appEnv = process.env.NODE_ENV;
 const creds = {};
 const server = {};
