@@ -1,8 +1,9 @@
 const config = require('../app.config');
 
 /**
- * This module creates an abstraction layer over Google Search Engine
+ * (1) Takes a term and returns URLs to image files associated with it (2) Returns search history
  * @module image-abstract
+ * @version 2.0.0
  */
 
 /**
@@ -37,7 +38,7 @@ class ImageSearch {
         this.historyCollection = docs;
       }
     });
-    
+
     this.projection = {
       '_id': false
     };
@@ -110,7 +111,7 @@ class ImageSearch {
       offset: req.query.offset || 10
     };
     const customSearchURL = `https://www.googleapis.com/customsearch/v1?key=${CSE_KEY}&cx=${CX_ID}&q=${flags.query}&searchType=image&num=${flags.offset}`;
-  
+
     // Data from CSE res object
     this._saveToHistory(flags.query);
 
@@ -129,7 +130,7 @@ class ImageSearch {
             obj.siteLink = item.image.contextLink;
             fmtRes.push(obj);
           });
-          
+
           res.set('Content-Type', 'application/json; charset=utf-8');
           res.status(200).json(fmtRes);
         }
