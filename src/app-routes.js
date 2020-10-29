@@ -1,7 +1,8 @@
 /**
- * This module sets up the application routes and connects them to their
+ * Sets up the application routes and connects them to their
  * handlers and views. It is imported into server.js
  * @module app-routes
+ * @version 2.0.0
  * @see module:timestamp
  * @see module:header-parser
  * @see module:file-analyzer
@@ -27,7 +28,7 @@ const setupRoutes = (activeApp, expressModule, mongoDatabase) => {
     tgtPath = curDir + '/src';
     activeApp.set('views', './src/views');
   }
-  
+
   activeApp.set('view engine', 'pug');
   activeApp.use(expressModule.static(path.resolve(__dirname, 'views')));
   activeApp.use('/static', expressModule.static(path.resolve(__dirname, 'views/static_files')));
@@ -43,7 +44,7 @@ const setupRoutes = (activeApp, expressModule, mongoDatabase) => {
   const rFileAnalyzer = expressModule.Router();
   const cbFileAnalyzer = require(tgtPath + '/controllers/file-analyzer');
   rFileAnalyzer.post('/file-analyzer/api/v1/findsize', cbFileAnalyzer.postData);
-  
+
   const rUrlShortener = expressModule.Router();
   const cbUrlShortener = require(tgtPath + '/controllers/url-shortener');
   cbUrlShortener.readCollection(mongoDatabase);
@@ -57,28 +58,28 @@ const setupRoutes = (activeApp, expressModule, mongoDatabase) => {
   rImageAbstract.get('/image-abstract/api/v1/history', cbImageAbstract.getRecentHistory);
 
   activeApp.use(rTimestamp, rHeaderParser, rFileAnalyzer, rUrlShortener, rImageAbstract);
-  
+
   activeApp.get('/', (req, res) => {
     res.render('index.pug', { content: 'landing', appEnv: appEnv });
   });
-  
-  activeApp.get('/timestamp/api/v1', function(req, res) {
+
+  activeApp.get('/timestamp/api/v1', function (req, res) {
     res.render('index.pug', { content: 'timestamp', appEnv: appEnv });
   });
 
-  activeApp.get('/header-parser/api/v1', function(req, res) {
+  activeApp.get('/header-parser/api/v1', function (req, res) {
     res.render('index.pug', { content: 'header-parser', appEnv: appEnv });
   });
 
-  activeApp.get('/file-analyzer', function(req, res) {
+  activeApp.get('/file-analyzer', function (req, res) {
     res.render('index.pug', { content: 'file-analyzer', appEnv: appEnv });
   });
 
-  activeApp.get('/url-shortener/api/v1', function(req, res) {
+  activeApp.get('/url-shortener/api/v1', function (req, res) {
     res.render('index.pug', { content: 'url-shortener', appEnv: appEnv });
   });
 
-  activeApp.get('/image-abstract/api/v1', function(req, res) {
+  activeApp.get('/image-abstract/api/v1', function (req, res) {
     res.render('index.pug', { content: 'image-abstract', appEnv: appEnv });
   });
 }
