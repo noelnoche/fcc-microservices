@@ -1,8 +1,9 @@
 const config = require('../app.config');
 
 /**
- * This module takes a URL and shortens it
+ * Takes a long web address and returns a short URL that references it
  * @module url-shortener
+ * @version 2.0.0
  */
 
 /**
@@ -55,7 +56,7 @@ class UrlShortener {
     const validator = require('validator');
     const shrinkCol = this.shrinkCol;
     const projection = this.projection;
-    
+
     // Grabs the data that follows * in the index.js file
     // /new/https://www.youtube.com/watch?v=D278XLbp1rE
     // `substring` extracts everyting after /url-shortener/api/v1/new/
@@ -69,10 +70,10 @@ class UrlShortener {
     else if (urlObj.protocol === null) {
       res.status(400).send("Error: Need to include the URL protocol with double slashes");
     }
-    else if (urlObj.protocol.match(/^https?:$/) && urlObj.slashes 
-      && urlObj.host.match(/^(www\.)?[a-z0-9-]{1,63}\.[a-z]{2,}(\.[a-z]{2,})?$/) 
+    else if (urlObj.protocol.match(/^https?:$/) && urlObj.slashes
+      && urlObj.host.match(/^(www\.)?[a-z0-9-]{1,63}\.[a-z]{2,}(\.[a-z]{2,})?$/)
       && validator.isURL(originalUrl) === true) {
-      
+
       const query = {
         original_url: {
           $eq: encodeURIComponent(originalUrl)
@@ -95,8 +96,8 @@ class UrlShortener {
           // Encode user-entered parameters to avoid unexpected requests
           entry.original_url = encodeURIComponent(originalUrl);
           entry.short_url = config.endpoints.SHORT_URI + shortid.generate();
-          
-          shrinkCol.insertOne(entry, (err) => {    
+
+          shrinkCol.insertOne(entry, (err) => {
             if (err) {
               console.error(new Error(err));
               next(err);
@@ -110,11 +111,11 @@ class UrlShortener {
                 console.error(new Error(err));
                 next(err);
               }
-            }        
+            }
           });
         }
       });
-    } 
+    }
     else {
       res.status(400).send("Error: Invalid URL host address");
     }
@@ -130,7 +131,7 @@ class UrlShortener {
     const shrinkCol = this.shrinkCol;
     const projection = this.projection;
     const query = {};
-    
+
     query.short_url = { $eq: config.endpoints.SHORT_URI + req.params.data };
 
     shrinkCol.findOne(query, projection, function (err, result) {
@@ -146,7 +147,7 @@ class UrlShortener {
       else {
         next('Error: The entered URL is incorrect or has expired');
       }
-    });      
+    });
   }
 }
 
