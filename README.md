@@ -2,14 +2,13 @@
 
 
 ## Description
-
 Microservices is a suite of web services: Timestamp Converter, Request Header Parser, 
 URL Shortener, Image Search Abstract Layer and File Metadata Reader. Each service has an API endpoint 
 and returns results in JSON format with the exception of File Metadata Reader.
 
 
 ## Demo
-Pending
+<https://youtu.be/g7ipSi-iz-A>
 
 
 ## Documentation
@@ -17,7 +16,6 @@ Pending
 
 
 ## Development
-
 1. Install MongoDB globally and package.json modules
 2. Open two terminals
 3. Start the MongoDB driver in the first terminal: `mongod --config /usr/local/etc/mongod.conf`
@@ -33,5 +31,4 @@ Pending
 
 
 ## License
-
-Code provided under an **[MIT license](https://github.com/noelnoche/fcc-microservices/blob/master/LICENSE.md)**.
+Code provided under an **[MIT license](https://github.com/noelnoche/fcc-microservices/blob/main/LICENSE.md)**.
