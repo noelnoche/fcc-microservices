@@ -16,17 +16,8 @@
   <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 
   <style>
-    .main>h3,
-    section header {
-      position: absolute;
-      height: 1px;
-      width: 1px;
-      margin: -1px;
+    section > header {
       padding: 0;
-      border: 0;
-      clip: rect(0, 0, 0, 0);
-      overflow: hidden;
-      white-space: nowrap;
     }
 
     article h2:nth-child(6),
@@ -38,8 +29,8 @@
 
 <body>
   <div class="page-wrapper">
-    <header>
-      <h1 class="header__title">
+    <header class="page-header">
+      <h1>
         Source: controllers/url-shortener.js
       </h1>
     </header>
@@ -54,8 +45,9 @@
             <pre class="prettyprint source linenums"><code>const config = require('../app.config');
 
 /**
- * This module takes a URL and shortens it
+ * Takes a long web address and returns a short URL that references it
  * @module url-shortener
+ * @version 2.0.0
  */
 
 /**
@@ -108,7 +100,7 @@ class UrlShortener {
     const validator = require('validator');
     const shrinkCol = this.shrinkCol;
     const projection = this.projection;
-    
+
     // Grabs the data that follows * in the index.js file
     // /new/https://www.youtube.com/watch?v=D278XLbp1rE
     // `substring` extracts everyting after /url-shortener/api/v1/new/
@@ -122,10 +114,10 @@ class UrlShortener {
     else if (urlObj.protocol === null) {
       res.status(400).send("Error: Need to include the URL protocol with double slashes");
     }
-    else if (urlObj.protocol.match(/^https?:$/) &amp;&amp; urlObj.slashes 
-      &amp;&amp; urlObj.host.match(/^(www\.)?[a-z0-9-]{1,63}\.[a-z]{2,}(\.[a-z]{2,})?$/) 
+    else if (urlObj.protocol.match(/^https?:$/) &amp;&amp; urlObj.slashes
+      &amp;&amp; urlObj.host.match(/^(www\.)?[a-z0-9-]{1,63}\.[a-z]{2,}(\.[a-z]{2,})?$/)
       &amp;&amp; validator.isURL(originalUrl) === true) {
-      
+
       const query = {
         original_url: {
           $eq: encodeURIComponent(originalUrl)
@@ -148,8 +140,8 @@ class UrlShortener {
           // Encode user-entered parameters to avoid unexpected requests
           entry.original_url = encodeURIComponent(originalUrl);
           entry.short_url = config.endpoints.SHORT_URI + shortid.generate();
-          
-          shrinkCol.insertOne(entry, (err) => {    
+
+          shrinkCol.insertOne(entry, (err) => {
             if (err) {
               console.error(new Error(err));
               next(err);
@@ -163,11 +155,11 @@ class UrlShortener {
                 console.error(new Error(err));
                 next(err);
               }
-            }        
+            }
           });
         }
       });
-    } 
+    }
     else {
       res.status(400).send("Error: Invalid URL host address");
     }
@@ -183,7 +175,7 @@ class UrlShortener {
     const shrinkCol = this.shrinkCol;
     const projection = this.projection;
     const query = {};
-    
+
     query.short_url = { $eq: config.endpoints.SHORT_URI + req.params.data };
 
     shrinkCol.findOne(query, projection, function (err, result) {
@@ -199,7 +191,7 @@ class UrlShortener {
       else {
         next('Error: The entered URL is incorrect or has expired');
       }
-    });      
+    });
   }
 }
 
@@ -214,7 +206,7 @@ module.exports = new UrlShortener();
     </div>
 
     <nav>
-      <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app-routes.html">app-routes</a></li><li><a href="module-file-analyzer.html">file-analyzer</a></li><li><a href="module-header-parser.html">header-parser</a></li><li><a href="module-image-abstract.html">image-abstract</a></li><li><a href="module-server.html">server</a></li><li><a href="module-timestamp.html">timestamp</a></li><li><a href="module-url-shortener.html">url-shortener</a></li></ul><h3>Classes</h3><ul><li><a href="module-file-analyzer-FileAnalyzer.html">FileAnalyzer</a></li><li><a href="module-image-abstract-ImageSearch.html">ImageSearch</a></li><li><a href="module-url-shortener-UrlShortener.html">UrlShortener</a></li></ul><h3>Global</h3><ul><li><a href="global.html#uploader-client">uploader-client</a></li></ul>
+      <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="app.module_config.html">config</a></li><li><a href="module-app-routes.html">app-routes</a></li><li><a href="module-file-analyzer.html">file-analyzer</a></li><li><a href="module-header-parser.html">header-parser</a></li><li><a href="module-image-abstract.html">image-abstract</a></li><li><a href="module-server.html">server</a></li><li><a href="module-timestamp.html">timestamp</a></li><li><a href="module-url-shortener.html">url-shortener</a></li></ul><h3>Classes</h3><ul><li><a href="module-file-analyzer-FileAnalyzer.html">FileAnalyzer</a></li><li><a href="module-image-abstract-ImageSearch.html">ImageSearch</a></li><li><a href="module-url-shortener-UrlShortener.html">UrlShortener</a></li></ul><h3>Global</h3><ul><li><a href="global.html#uploader-client">uploader-client</a></li></ul>
       <div class="nav__repo">
         <h3><a href="https://github.com/noelnoche/fcc-microservices">Repository</a>
           <svg class="nav__svg-icon" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -237,7 +229,7 @@ module.exports = new UrlShortener();
         3.6.6</a>
       
       on
-      Tue Oct 27 2020 08:35:20 GMT-0700 (Pacific Daylight Time)
+      Wed Oct 28 2020 20:11:23 GMT-0700 (Pacific Daylight Time)
       
     </footer>
   </div>

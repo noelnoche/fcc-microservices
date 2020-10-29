@@ -16,17 +16,8 @@
   <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 
   <style>
-    .main>h3,
-    section header {
-      position: absolute;
-      height: 1px;
-      width: 1px;
-      margin: -1px;
+    section > header {
       padding: 0;
-      border: 0;
-      clip: rect(0, 0, 0, 0);
-      overflow: hidden;
-      white-space: nowrap;
     }
 
     article h2:nth-child(6),
@@ -38,8 +29,8 @@
 
 <body>
   <div class="page-wrapper">
-    <header>
-      <h1 class="header__title">
+    <header class="page-header">
+      <h1>
         Source: controllers/image-abstract.js
       </h1>
     </header>
@@ -54,8 +45,9 @@
             <pre class="prettyprint source linenums"><code>const config = require('../app.config');
 
 /**
- * This module creates an abstraction layer over Google Search Engine
+ * (1) Takes a term and returns URLs to image files associated with it (2) Returns search history
  * @module image-abstract
+ * @version 2.0.0
  */
 
 /**
@@ -90,7 +82,7 @@ class ImageSearch {
         this.historyCollection = docs;
       }
     });
-    
+
     this.projection = {
       '_id': false
     };
@@ -163,7 +155,7 @@ class ImageSearch {
       offset: req.query.offset || 10
     };
     const customSearchURL = `https://www.googleapis.com/customsearch/v1?key=${CSE_KEY}&amp;cx=${CX_ID}&amp;q=${flags.query}&amp;searchType=image&amp;num=${flags.offset}`;
-  
+
     // Data from CSE res object
     this._saveToHistory(flags.query);
 
@@ -182,7 +174,7 @@ class ImageSearch {
             obj.siteLink = item.image.contextLink;
             fmtRes.push(obj);
           });
-          
+
           res.set('Content-Type', 'application/json; charset=utf-8');
           res.status(200).json(fmtRes);
         }
@@ -208,7 +200,7 @@ module.exports = new ImageSearch();
     </div>
 
     <nav>
-      <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app-routes.html">app-routes</a></li><li><a href="module-file-analyzer.html">file-analyzer</a></li><li><a href="module-header-parser.html">header-parser</a></li><li><a href="module-image-abstract.html">image-abstract</a></li><li><a href="module-server.html">server</a></li><li><a href="module-timestamp.html">timestamp</a></li><li><a href="module-url-shortener.html">url-shortener</a></li></ul><h3>Classes</h3><ul><li><a href="module-file-analyzer-FileAnalyzer.html">FileAnalyzer</a></li><li><a href="module-image-abstract-ImageSearch.html">ImageSearch</a></li><li><a href="module-url-shortener-UrlShortener.html">UrlShortener</a></li></ul><h3>Global</h3><ul><li><a href="global.html#uploader-client">uploader-client</a></li></ul>
+      <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="app.module_config.html">config</a></li><li><a href="module-app-routes.html">app-routes</a></li><li><a href="module-file-analyzer.html">file-analyzer</a></li><li><a href="module-header-parser.html">header-parser</a></li><li><a href="module-image-abstract.html">image-abstract</a></li><li><a href="module-server.html">server</a></li><li><a href="module-timestamp.html">timestamp</a></li><li><a href="module-url-shortener.html">url-shortener</a></li></ul><h3>Classes</h3><ul><li><a href="module-file-analyzer-FileAnalyzer.html">FileAnalyzer</a></li><li><a href="module-image-abstract-ImageSearch.html">ImageSearch</a></li><li><a href="module-url-shortener-UrlShortener.html">UrlShortener</a></li></ul><h3>Global</h3><ul><li><a href="global.html#uploader-client">uploader-client</a></li></ul>
       <div class="nav__repo">
         <h3><a href="https://github.com/noelnoche/fcc-microservices">Repository</a>
           <svg class="nav__svg-icon" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -231,7 +223,7 @@ module.exports = new ImageSearch();
         3.6.6</a>
       
       on
-      Tue Oct 27 2020 08:35:20 GMT-0700 (Pacific Daylight Time)
+      Wed Oct 28 2020 20:11:23 GMT-0700 (Pacific Daylight Time)
       
     </footer>
   </div>

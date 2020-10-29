@@ -16,17 +16,8 @@
   <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 
   <style>
-    .main>h3,
-    section header {
-      position: absolute;
-      height: 1px;
-      width: 1px;
-      margin: -1px;
+    section > header {
       padding: 0;
-      border: 0;
-      clip: rect(0, 0, 0, 0);
-      overflow: hidden;
-      white-space: nowrap;
     }
 
     article h2:nth-child(6),
@@ -38,8 +29,8 @@
 
 <body>
   <div class="page-wrapper">
-    <header>
-      <h1 class="header__title">
+    <header class="page-header">
+      <h1>
         Source: app-routes.js
       </h1>
     </header>
@@ -52,9 +43,10 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * This module sets up the application routes and connects them to their
+ * Sets up the application routes and connects them to their
  * handlers and views. It is imported into server.js
  * @module app-routes
+ * @version 2.0.0
  * @see module:timestamp
  * @see module:header-parser
  * @see module:file-analyzer
@@ -80,7 +72,7 @@ const setupRoutes = (activeApp, expressModule, mongoDatabase) => {
     tgtPath = curDir + '/src';
     activeApp.set('views', './src/views');
   }
-  
+
   activeApp.set('view engine', 'pug');
   activeApp.use(expressModule.static(path.resolve(__dirname, 'views')));
   activeApp.use('/static', expressModule.static(path.resolve(__dirname, 'views/static_files')));
@@ -96,7 +88,7 @@ const setupRoutes = (activeApp, expressModule, mongoDatabase) => {
   const rFileAnalyzer = expressModule.Router();
   const cbFileAnalyzer = require(tgtPath + '/controllers/file-analyzer');
   rFileAnalyzer.post('/file-analyzer/api/v1/findsize', cbFileAnalyzer.postData);
-  
+
   const rUrlShortener = expressModule.Router();
   const cbUrlShortener = require(tgtPath + '/controllers/url-shortener');
   cbUrlShortener.readCollection(mongoDatabase);
@@ -110,28 +102,28 @@ const setupRoutes = (activeApp, expressModule, mongoDatabase) => {
   rImageAbstract.get('/image-abstract/api/v1/history', cbImageAbstract.getRecentHistory);
 
   activeApp.use(rTimestamp, rHeaderParser, rFileAnalyzer, rUrlShortener, rImageAbstract);
-  
+
   activeApp.get('/', (req, res) => {
     res.render('index.pug', { content: 'landing', appEnv: appEnv });
   });
-  
-  activeApp.get('/timestamp/api/v1', function(req, res) {
+
+  activeApp.get('/timestamp/api/v1', function (req, res) {
     res.render('index.pug', { content: 'timestamp', appEnv: appEnv });
   });
 
-  activeApp.get('/header-parser/api/v1', function(req, res) {
+  activeApp.get('/header-parser/api/v1', function (req, res) {
     res.render('index.pug', { content: 'header-parser', appEnv: appEnv });
   });
 
-  activeApp.get('/file-analyzer', function(req, res) {
+  activeApp.get('/file-analyzer', function (req, res) {
     res.render('index.pug', { content: 'file-analyzer', appEnv: appEnv });
   });
 
-  activeApp.get('/url-shortener/api/v1', function(req, res) {
+  activeApp.get('/url-shortener/api/v1', function (req, res) {
     res.render('index.pug', { content: 'url-shortener', appEnv: appEnv });
   });
 
-  activeApp.get('/image-abstract/api/v1', function(req, res) {
+  activeApp.get('/image-abstract/api/v1', function (req, res) {
     res.render('index.pug', { content: 'image-abstract', appEnv: appEnv });
   });
 }
@@ -146,7 +138,7 @@ module.exports.setup = setupRoutes;</code></pre>
     </div>
 
     <nav>
-      <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app-routes.html">app-routes</a></li><li><a href="module-file-analyzer.html">file-analyzer</a></li><li><a href="module-header-parser.html">header-parser</a></li><li><a href="module-image-abstract.html">image-abstract</a></li><li><a href="module-server.html">server</a></li><li><a href="module-timestamp.html">timestamp</a></li><li><a href="module-url-shortener.html">url-shortener</a></li></ul><h3>Classes</h3><ul><li><a href="module-file-analyzer-FileAnalyzer.html">FileAnalyzer</a></li><li><a href="module-image-abstract-ImageSearch.html">ImageSearch</a></li><li><a href="module-url-shortener-UrlShortener.html">UrlShortener</a></li></ul><h3>Global</h3><ul><li><a href="global.html#uploader-client">uploader-client</a></li></ul>
+      <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="app.module_config.html">config</a></li><li><a href="module-app-routes.html">app-routes</a></li><li><a href="module-file-analyzer.html">file-analyzer</a></li><li><a href="module-header-parser.html">header-parser</a></li><li><a href="module-image-abstract.html">image-abstract</a></li><li><a href="module-server.html">server</a></li><li><a href="module-timestamp.html">timestamp</a></li><li><a href="module-url-shortener.html">url-shortener</a></li></ul><h3>Classes</h3><ul><li><a href="module-file-analyzer-FileAnalyzer.html">FileAnalyzer</a></li><li><a href="module-image-abstract-ImageSearch.html">ImageSearch</a></li><li><a href="module-url-shortener-UrlShortener.html">UrlShortener</a></li></ul><h3>Global</h3><ul><li><a href="global.html#uploader-client">uploader-client</a></li></ul>
       <div class="nav__repo">
         <h3><a href="https://github.com/noelnoche/fcc-microservices">Repository</a>
           <svg class="nav__svg-icon" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +161,7 @@ module.exports.setup = setupRoutes;</code></pre>
         3.6.6</a>
       
       on
-      Tue Oct 27 2020 08:35:20 GMT-0700 (Pacific Daylight Time)
+      Wed Oct 28 2020 20:11:23 GMT-0700 (Pacific Daylight Time)
       
     </footer>
   </div>
