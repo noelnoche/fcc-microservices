@@ -1,8 +1,10 @@
 /**
- * This module uploads a local file and returns file size data
+ * Returns size data from an uploaded file
  * @module file-analyzer
+ * @version 2.0.0
  * @see uploader-client
  */
+
 
 /**
  * Class representing File Analyzer operations
@@ -41,7 +43,7 @@ class FileAnalyzer {
     // so can only test that file post is successful
     if (process.env.NODE_ENV === 'test') {
       res.set('Content-Type', 'application/json; charset=utf-8');
-      res.status(200).json({ upload: 'successful'});
+      res.status(200).json({ upload: 'successful' });
       return;
     }
 
@@ -57,7 +59,7 @@ class FileAnalyzer {
       if (err instanceof multer.MulterError) {
         console.error(new Error(err));
         next(err);
-      } 
+      }
       else {
         try {
           const entry = {
@@ -68,7 +70,7 @@ class FileAnalyzer {
           res.status(200).json(entry.fileSize);
           this._deleteFile(entry.fileName);
         }
-        catch(err) {
+        catch (err) {
           console.error(new Error(err));
           next(err);
         }
