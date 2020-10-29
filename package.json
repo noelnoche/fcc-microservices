@@ -20,7 +20,7 @@
     "test": "NODE_ENV=test mocha --ui bdd --exit || true",
     "babel": "babel src -d dist --source-maps inline --copy-files --ignore src/views/static_files/js/dev_uploader-client.js",
     "eslint": "npx eslint src/**/*.js",
-    "jsdoc": "jsdoc ./node_modules/.bin/jsdoc -R README.md src -r -d docs"
+    "jsdoc": "npx jsdoc ./node_modules/.bin/jsdoc -R README.md src -r -d docs"
   },
   "dependencies": {
     "axios": "^0.19.2",
