@@ -1,4 +1,9 @@
-/** @module header-parser */
+/**
+ * Returns client request header information
+ * @module header-parser
+ * @version 2.0.0
+ */
+
 
 /**
  * Request header parser application URL handler
