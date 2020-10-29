@@ -64,28 +64,8 @@
 <p>Microservices is a suite of web services: Timestamp Converter, Request Header Parser,
 URL Shortener, Image Search Abstract Layer and File Metadata Reader. Each service has an API endpoint
 and returns results in JSON format with the exception of File Metadata Reader.</p>
-<h2>Demo</h2>
-<p>Pending</p>
-<h2>Documentation</h2>
-<p><a href="https:%5C/%5C/noelnoche.github.io/fcc-microservices/index.html">https://noelnoche.github.io/fcc-microservices/index.html</a></p>
-<h2>Development</h2>
-<ol>
-<li>Install MongoDB globally and package.json modules</li>
-<li>Open two terminals</li>
-<li>Start the MongoDB driver in the first terminal: <code>mongod --config /usr/local/etc/mongod.conf</code></li>
-<li>Make a new database via the mongo shell in the second terminal: <code>mongo</code> then <code>use DB_NAME</code></li>
-<li>Make two collections:</li>
-</ol>
-<pre class="prettyprint source lang-sh"><code>	db.createCollection('shrinkray', {capped:true, size:100000, max:100});
-	db.createCollection('history', {capped:true, size:100000, max:100});
-</code></pre>
-<ol start="6">
-<li>Exit the mongo shell (<code>exit</code>) and <code>cd</code> to the root of the project directory</li>
-<li>Start the node server: <code>npm start</code></li>
-<li>Open the browser: <code>http://localhost:3000</code></li>
-</ol>
 <h2>License</h2>
-<p>Code provided under an <strong><a href="https://github.com/noelnoche/fcc-microservices/blob/master/LICENSE.md">MIT license</a></strong>.</p></article>
+<p>Code provided under an <strong><a href="https://github.com/noelnoche/fcc-microservices/blob/main/LICENSE.md">MIT license</a></strong>.</p></article>
     </section>
 
 
@@ -119,7 +99,7 @@ and returns results in JSON format with the exception of File Metadata Reader.</
         3.6.6</a>
       
       on
-      Wed Oct 28 2020 20:11:23 GMT-0700 (Pacific Daylight Time)
+      Wed Oct 28 2020 21:51:36 GMT-0700 (Pacific Daylight Time)
       
     </footer>
   </div>
